@@ -53,7 +53,7 @@ EOC;
             $html .= "<label for=\"{$id}\">{$this->title}</label>";
         }
         $html = "<div class=\"file-loading\">";
-        $html = "<input id=\"{$id}\" type=\"file\">";
+        $html = "<input id=\"{$id}\" type=\"file\" class=\"file\">";
         $html .= '</div>';
 
         return $html;
