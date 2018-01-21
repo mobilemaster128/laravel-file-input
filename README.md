@@ -5,30 +5,38 @@ Laravel bootstrap file input support.
 
 Handeling chunked uploads.
 
-## Installation
+## 1. Installation
 
-Install using composer 
+1. Require the package using composer:
 
-```sh
-composer require mobilemaster/laravel-file-input
-```
+    ```
+    composer require mobilemaster/laravel-file-input
+    ```
 
-Add the provider to `config/app.php`
+2. Add the service provider to the `providers` in `config/app.php`:
 
-```php
-'providers' => [
-]
-```
+    > Laravel 5.5 uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider
 
-If you want to use te build in builder insert the facade
+    ```php
+    MobileMaster\LaravelFileInput\ServiceProvider::class,
+    ```
 
-```php
-'aliases' => array(
-),
-```
+3. Publish the public assets:
 
-To publish the assets:
+    ```
+    php artisan vendor:publish --provider="MobileMaster\LaravelFileInput\ServiceProvider" --tag=assets
+    ```
 
-```sh
-php artisan vendor:publish --provider="MobileMaster\LaravelFileInput\ServiceProvider" --tag=assets --force
-```
+## 2. Updating
+
+1. To update this package, first update the composer package:
+
+    ```
+    composer update mobilemaster/laravel-file-input
+    ```
+
+2. Then, publish the public assets with the `--force` flag to overwrite existing files
+
+    ```
+    php artisan vendor:publish --provider="MobileMaster\LaravelFileInput\ServiceProvider" --tag=assets --force
+    ```

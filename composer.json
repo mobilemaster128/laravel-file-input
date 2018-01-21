@@ -11,7 +11,9 @@
   "license": "MIT",
   "extra": {
     "laravel": {
-      "providers": [],
+      "providers": [
+          "MobileMaster\\LaravelFileInput\\ServiceProvider"
+      ],
       "aliases": {}
     }
   },

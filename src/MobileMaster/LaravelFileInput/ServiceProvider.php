@@ -29,9 +29,6 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->publishAssets();
-        // $this->publishes([
-        //     __DIR__.'/../../../public/assets' => public_path('vendor/mobilemaster/laravel-file-input/'),
-        // ], 'public');
     }
 
     private function publishAssets()
