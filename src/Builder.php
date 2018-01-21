@@ -44,13 +44,12 @@ EOC;
         $suffix = $this->getsuffix();
         $html = '';
         $id = "input-{$suffix}";
-        $name = "input{$suffix}";
         if (!empty($this->title)) {
             $html .= "<label for=\"{$id}\">{$this->title}</label>";
         }
         $html .= "<div class=\"file-loading\">";
         $html .= "<input id=\"{$id}\" type=\"file\"";
-        $html .= $this->name ? " name=\"{$name}\"" : " ";
+        $html .= $this->name ? " name=\"{$this->name}\"" : " ";
          
         $html .= $this->multiple ? " multiple >" : " >";
         $html .= '</div>';
