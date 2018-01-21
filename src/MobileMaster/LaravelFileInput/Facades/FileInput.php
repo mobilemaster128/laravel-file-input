@@ -5,9 +5,9 @@ namespace MobileMaster\LaravelFileInput\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \JildertMiedema\LaravelPlupload\Manager
+ * @see \MobileMaster\LaravelFileInput\Manager
  */
-class Plupload extends Facade
+class FileInput extends Facade
 {
         /**
          * Get the registered name of the component.

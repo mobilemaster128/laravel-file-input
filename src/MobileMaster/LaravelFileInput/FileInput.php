@@ -4,7 +4,7 @@ namespace MobileMaster\LaravelFileInput;
 
 use Illuminate\Contracts\Config\Repository as Config;
 
-class Plupload
+class FileInput
 {
         /**
          * Config Instance.
