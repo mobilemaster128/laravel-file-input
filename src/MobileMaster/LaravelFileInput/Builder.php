@@ -6,7 +6,7 @@ class Builder
 {
     private $settings;
     private $prefix;
-    private $scriptUrl = '/vendor/jildertmiedema/laravel-plupload/js/plupload.full.min.js';
+    private $scriptUrl = '/vendor/mobilemaster/laravel-file-input/js/plupload.full.min.js';
 
     public function createJsInit()
     {
