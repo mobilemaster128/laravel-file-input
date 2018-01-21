@@ -131,6 +131,8 @@ EOC;
     public function multiple($value)
     {
         $this->multiple = $value;
+
+        return $this;
     }
 
     public static function make(array $settings = null)
