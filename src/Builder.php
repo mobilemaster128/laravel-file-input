@@ -52,8 +52,8 @@ EOC;
         if (!empty($this->title)) {
             $html .= "<label for=\"{$id}\">{$this->title}</label>";
         }
-        $html = "<div class=\"file-loading\">";
-        $html = "<input id=\"{$id}\" type=\"file\" class=\"file\">";
+        $html .= "<div class=\"file-loading\">";
+        $html .= "<input id=\"{$id}\" type=\"file\" class=\"file\">";
         $html .= '</div>';
 
         return $html;
