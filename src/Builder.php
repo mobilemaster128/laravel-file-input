@@ -131,6 +131,13 @@ EOC;
         return $this;
     }
 
+    public function withName($value)
+    {
+        $this->name = $value;
+
+        return $this;
+    }
+
     public function multiple($value)
     {
         $this->multiple = $value;
