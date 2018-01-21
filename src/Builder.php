@@ -5,6 +5,7 @@ namespace MobileMaster\LaravelFileInput;
 class Builder
 {
     private $title;
+    private $multiple;
     private $settings;
     private $suffix;
 
@@ -12,8 +13,12 @@ class Builder
     {
         $suffix = $this->getsuffix();
         $id = "input-{$suffix}";
-        $id = "input-file-{$suffix}";
-        return sprintf('$(function() { $(".%s".fileinput({%s});});', $this->suffix, json_encode($this->getSettings()));
+        $settings = '';//json_encode($this->getSettings());
+        $script = "var {$suffix}_uploader = $(\"input#{$id}[type=file]\");
+        if ({$suffix}_uploader.length) {
+            {$suffix}_uploader.fileinput({$settings});
+        }";
+        return $script;
     }
 
     public function addScripts()
@@ -38,11 +43,12 @@ EOC;
         $suffix = $this->getsuffix();
         $html = '';
         $id = "input-{$suffix}";
+        $name = "input{$suffix}";
         if (!empty($this->title)) {
             $html .= "<label for=\"{$id}\">{$this->title}</label>";
         }
         $html .= "<div class=\"file-loading\">";
-        $html .= "<input id=\"{$id}\" type=\"file\" class=\"file\">";
+        $html .= "<input id=\"{$id}\" name=\"{$name}\" type=\"file\"" . $this->multiple ? "multiple>" : ">";
         $html .= '</div>';
 
         return $html;
@@ -53,9 +59,9 @@ EOC;
         $html = '';
         $html .= $this->addScripts();
         $html .= $this->getContainer();
-        // $html .= '<script type="text/javascript">';
-        // $html .= $this->createJsInit();
-        // $html .= '</script>';
+        $html .= '<script type="text/javascript">';
+        $html .= $this->createJsInit();
+        $html .= '</script>';
 
         return $html;
     }

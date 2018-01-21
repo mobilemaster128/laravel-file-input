@@ -9,8 +9,8 @@ return [
         'data-allowed-file-extensions' => [],
         'data-upload-url' => '',
         'readonly' => false,
-        'multiple' => false,
         'disabled' => false,
         'accept' => '*'
     ],
+    'multiple' => false,
 ];
