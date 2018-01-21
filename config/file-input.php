@@ -2,15 +2,15 @@
 
 return [
     'settings' => [
-        'data-show-caption' => true,
-        'data-show-preview' => true,
-        'data-show-upload' => false,
+        'showCaption' => true,
+        'showPreview' => true,
+        'showRemove' => true,
+        'showUpload' => false,
         'data-msg-placeholder' => 'Select file...',
-        'data-allowed-file-extensions' => [],
-        'data-upload-url' => '',
-        'readonly' => false,
-        'disabled' => false,
-        'accept' => '*'
+        'allowedFileExtensions' => [],
+        'uploadUrl' => '',
+        'accept' => '*',
+        'rtl' => false,
     ],
     'multiple' => false,
 ];

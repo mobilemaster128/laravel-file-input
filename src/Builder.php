@@ -13,10 +13,10 @@ class Builder
     {
         $suffix = $this->getsuffix();
         $id = "input-{$suffix}";
-        $settings = '';//json_encode($this->getSettings());
-        $script = "var {$suffix}_uploader = $(\"input#{$id}[type=file]\");
-        if ({$suffix}_uploader.length) {
-            {$suffix}_uploader.fileinput({$settings});
+        $settings = json_encode($this->getSettings());
+        $script = "var {$suffix}_file_input = $(\"input#{$id}[type=file]\");
+        if ({$suffix}_file_input.length) {
+            {$suffix}_file_input.fileinput({$settings});
         }";
         return $script;
     }
@@ -70,13 +70,11 @@ EOC;
     public function getDefaultSettings()
     {
         $settings = [];
-        $settings['runtimes'] = 'html5';
-        $settings['browse_button'] = $this->suffix.'-browse-button';
-        $settings['container'] = $this->suffix.'-container';
-        $settings['url'] = '/upload';
-        $settings['headers'] = [
-            'Accept' => 'application/json',
-            'X-CSRF-TOKEN' => csrf_token(),
+        $settings['ajaxSettings'] = [
+            'headers' => [
+                'Accept' => 'application/json',
+                'X-CSRF-TOKEN' => csrf_token()
+            ]
         ];
 
         return $settings;
@@ -118,23 +116,16 @@ EOC;
         return $suffix;
     }
 
-    public function withsuffix($value)
+    public function withSuffix($value)
     {
         $this->setsuffix($value);
 
         return $this;
     }
 
-    public function setScriptUrl($value)
+    public function multiple($value)
     {
-        $this->scriptUrl = $value;
-    }
-
-    public function withScriptUrl($value)
-    {
-        $this->setScriptUrl($value);
-
-        return $this;
+        $this->multiple = $value;
     }
 
     public static function make(array $settings = null)
