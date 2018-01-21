@@ -23,6 +23,8 @@ class Builder
         <link href="/vendor/mobilemaster/file-input/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
         <!-- if using RTL (Right-To-Left) orientation, load the RTL CSS file after fileinput.css by uncommenting below -->
         <!-- link href="/vendor/mobilemaster/file-input/css/fileinput-rtl.min.css" media="all" rel="stylesheet" type="text/css" /-->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+        <link href="/vendor/mobilemaster/file-input/themes/explorer-fa/theme.css" media="all" rel="stylesheet" type="text/css"/>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <!-- piexif.min.js is only needed for restoring exif data in resized images and when you 
             wish to resize images before upload. This must be loaded before fileinput.min.js -->
@@ -37,6 +39,7 @@ class Builder
         <!-- the main fileinput plugin file -->
         <script src="/vendor/mobilemaster/file-input/js/fileinput.min.js"></script>
         <!-- optionally if you need a theme like font awesome theme you can include it as mentioned below -->
+        <script src="/vendor/mobilemaster/file-input/themes/explorer-fa/theme.js" type="text/javascript"></script>
         <script src="/vendor/mobilemaster/file-input/themes/fa/theme.js"></script>
         <!-- optionally if you need translation for your language then include  locale file as mentioned below -->
         <script src="/vendor/mobilemaster/file-input/js/locales/(lang).js"></script>
