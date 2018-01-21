@@ -1,36 +1,30 @@
 {
-    "name": "mobilemaster/laravel-file-input",
-    "description": "Laravel 5/File Input - Handle large file uploads",
-    "authors": [
-        {
-            "name": "Mobile Master",
-            "email": "mobilemaster128@gmail.com"
-        }
-    ],
-    "keywords": [
-        "laravel",
-        "file-input",
-        "large files"
-    ],
-    "license": "MIT",
-    "extra": {
-      "laravel": {
-        "providers": [],
-        "aliases": {
-        }
-      }
-    },
-    "require": {
-        "php": ">=5.5.0",
-        "illuminate/support": "^5.1"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^4.0",
-        "mockery/mockery": "^0.9.4"
-    },
-    "autoload": {
-        "psr-0": {
-        }
-    },
-    "minimum-stability": "stable"
+  "name": "mobilemaster/laravel-file-input",
+  "description": "Laravel 5/File Input - Handle large file uploads",
+  "authors": [
+    {
+      "name": "Mobile Master",
+      "email": "mobilemaster128@gmail.com"
+    }
+  ],
+  "keywords": ["laravel", "file-input", "large files"],
+  "license": "MIT",
+  "extra": {
+    "laravel": {
+      "providers": [],
+      "aliases": {}
+    }
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "illuminate/support": "^5.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MobileMaster\\LaravelFileInput\\": "src/"
+    }
+  }
 }
