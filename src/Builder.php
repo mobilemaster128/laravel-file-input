@@ -54,7 +54,7 @@ EOC;
         }
         $html = "<div class=\"file-loading\">";
         $html = "<input id=\"{$id}\" type=\"file\">";
-        $html .= '</input>';
+        $html .= '</div>';
 
         return $html;
     }
@@ -62,8 +62,8 @@ EOC;
     public function createHtml()
     {
         $html = '';
-        $html .= $this->addScripts();
-        $html .= $this->getContainer();
+        // $html .= $this->addScripts();
+        $html = $this->getContainer();
         // $html .= '<script type="text/javascript">';
         // $html .= $this->createJsInit();
         // $html .= '</script>';
