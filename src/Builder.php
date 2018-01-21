@@ -4,35 +4,57 @@ namespace MobileMaster\LaravelFileInput;
 
 class Builder
 {
+    private $title;
     private $settings;
-    private $prefix;
-    private $scriptUrl = '/vendor/mobilemaster/laravel-file-input/js/plupload.full.min.js';
+    private $suffix;
 
     public function createJsInit()
     {
-        return sprintf('var %s_uploader = new plupload.Uploader(%s);', $this->prefix, json_encode($this->getSettings()));
-    }
-
-    public function createJsRun()
-    {
-        $script = sprintf('%s_uploader.init();', $this->prefix);
-        $script .= sprintf('document.getElementById(\'%s-start-upload\').onclick = function() {%s_uploader.start();};', $this->prefix, $this->prefix);
-
-        return $script;
+        $suffix = $this->getsuffix();
+        $id = "input-{$suffix}";
+        $id = "input-file-{$suffix}";
+        return sprintf('$(function() { $(".%s".fileinput({%s});});', $this->suffix, json_encode($this->getSettings()));
     }
 
     public function addScripts()
     {
-        return sprintf('<script type="text/javascript" src="%s"></script>', $this->scriptUrl);
+        $scripts = <<<EOC
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('vendor/mobilemaster/file-input/css/fileinput.min.css') }}" media="all" rel="stylesheet" type="text/css" />
+        <!-- if using RTL (Right-To-Left) orientation, load the RTL CSS file after fileinput.css by uncommenting below -->
+        <!-- link href="{{ asset('vendor/mobilemaster/file-input/css/fileinput-rtl.min.css') }}" media="all" rel="stylesheet" type="text/css" /-->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <!-- piexif.min.js is only needed for restoring exif data in resized images and when you 
+            wish to resize images before upload. This must be loaded before fileinput.min.js -->
+        <script src="{{ asset('vendor/mobilemaster/file-input/js/plugins/piexif.min.js') }}" type="text/javascript"></script>
+        <!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview. 
+            This must be loaded before fileinput.min.js -->
+        <script src="{{ asset('vendor/mobilemaster/file-input/js/plugins/sortable.min.js') }}" type="text/javascript"></script>
+        <!-- purify.min.js is only needed if you wish to purify HTML content in your preview for 
+            HTML files. This must be loaded before fileinput.min.js -->
+        <script src="{{ asset('vendor/mobilemaster/file-input/js/plugins/purify.min.js') }}" type="text/javascript"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- the main fileinput plugin file -->
+        <script src="{{ asset('vendor/mobilemaster/file-input/js/fileinput.min.js') }}"></script>
+        <!-- optionally if you need a theme like font awesome theme you can include it as mentioned below -->
+        <script src="{{ asset('vendor/mobilemaster/file-input/themes/fa/theme.js') }}"></script>
+        <!-- optionally if you need translation for your language then include  locale file as mentioned below -->
+        <script src="{{ asset('vendor/mobilemaster/file-input/js/locales/(lang).js') }}"></script>
+EOC;
+        return $scripts;
     }
 
     public function getContainer()
     {
-        $prefix = $this->prefix;
-        $html = "<div id=\"{$prefix}-container\">";
-        $html .= "<button type=\"button\" id=\"{$prefix}-browse-button\" class=\"btn btn-primary\">Browse...</button>";
-        $html .= "<button type=\"button\" id=\"{$prefix}-start-upload\" class=\"btn btn-success\">Upload</button>";
-        $html .= '</div>';
+        $suffix = $this->getsuffix();
+        $html = '';
+        $id = "input-{$suffix}";
+        if (!empty($this->title)) {
+            $html .= "<label for=\"{$id}\">{$this->title}</label>";
+        }
+        $html = "<div class=\"file-loading\">";
+        $html = "<input id=\"{$id}\" type=\"file\">";
+        $html .= '</input>';
 
         return $html;
     }
@@ -40,12 +62,11 @@ class Builder
     public function createHtml()
     {
         $html = '';
-        $html .= $this->getContainer();
         $html .= $this->addScripts();
-        $html .= '<script type="text/javascript">';
-        $html .= $this->createJsInit();
-        $html .= $this->createJsRun();
-        $html .= '</script>';
+        $html .= $this->getContainer();
+        // $html .= '<script type="text/javascript">';
+        // $html .= $this->createJsInit();
+        // $html .= '</script>';
 
         return $html;
     }
@@ -54,8 +75,8 @@ class Builder
     {
         $settings = [];
         $settings['runtimes'] = 'html5';
-        $settings['browse_button'] = $this->prefix.'-browse-button';
-        $settings['container'] = $this->prefix.'-container';
+        $settings['browse_button'] = $this->suffix.'-browse-button';
+        $settings['container'] = $this->suffix.'-container';
         $settings['url'] = '/upload';
         $settings['headers'] = [
             'Accept' => 'application/json',
@@ -90,14 +111,20 @@ class Builder
         }
     }
 
-    public function setPrefix($value)
+    public function setsuffix($value)
     {
-        $this->prefix = $value;
+        $this->suffix = $value;
     }
 
-    public function withPrefix($value)
+    public function getsuffix()
     {
-        $this->setPrefix($value);
+        $suffix = $this->suffix ?: 'file';
+        return $suffix;
+    }
+
+    public function withsuffix($value)
+    {
+        $this->setsuffix($value);
 
         return $this;
     }

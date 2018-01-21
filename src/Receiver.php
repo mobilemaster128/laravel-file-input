@@ -19,7 +19,7 @@ class Receiver
 
     public function getPath()
     {
-        $path = storage_path().'/plupload';
+        $path = storage_path().'/fileinput';
 
         if (!is_dir($path)) {
             mkdir($path, 0777, true);

@@ -2,6 +2,6 @@
 
 namespace MobileMaster\LaravelFileInput;
 
-class PluploadException extends \Exception
+class FileInputException extends \Exception
 {
 }

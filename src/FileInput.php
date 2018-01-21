@@ -32,7 +32,7 @@ class FileInput
      */
     public function getConfigOption($option)
     {
-        return $this->config->get("laravel-plupload::plupload.{$option}");
+        return $this->config->get("file-input.{$option}");
     }
 
     public function getDefaultView()

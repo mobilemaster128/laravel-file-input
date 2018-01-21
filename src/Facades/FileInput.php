@@ -16,6 +16,6 @@ class FileInput extends Facade
          */
         protected static function getFacadeAccessor()
         {
-            return 'plupload';
+            return 'fileinput';
         }
 }
