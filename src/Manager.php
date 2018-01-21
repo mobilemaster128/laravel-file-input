@@ -23,11 +23,4 @@ class Manager
     {
         return Builder::init($settings);
     }
-
-    public function receive($name, Closure $handler)
-    {
-        $receiver = new Receiver($this->request);
-
-        return $receiver->receive($name, $handler);
-    }
 }

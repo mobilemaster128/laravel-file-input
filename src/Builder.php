@@ -8,6 +8,7 @@ class Builder
     private $multiple;
     private $settings;
     private $suffix;
+    private $name;
 
     public function createJsInit()
     {
@@ -48,8 +49,10 @@ EOC;
             $html .= "<label for=\"{$id}\">{$this->title}</label>";
         }
         $html .= "<div class=\"file-loading\">";
-        $html .= "<input id=\"{$id}\" name=\"{$name}\" type=\"file\"";
-        $html .= $this->multiple ? "multiple>" : ">";
+        $html .= "<input id=\"{$id}\" type=\"file\"";
+        $html .= $this->name ? " name=\"{$name}\"" : " ";
+         
+        $html .= $this->multiple ? " multiple >" : " >";
         $html .= '</div>';
 
         return $html;

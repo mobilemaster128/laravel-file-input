@@ -41,7 +41,11 @@ Handeling chunked uploads.
     php artisan vendor:publish --provider="MobileMaster\LaravelFileInput\ServiceProvider" --tag=assets --force
     ```
 
-## 3. Simple File Input builder
+## 3. Sending files
+
+There are 2 ways to send files with this plugin.
+
+### 1. Simple File Input builder
 To use the builder for creating send form you can use this function:
 
 ```php
@@ -53,10 +57,25 @@ echo FileInput::make([
 **Note:** The options given to the make function are found on in the [file input documentation](https://github.com/kartik-v/bootstrap-fileinput/wiki/09.-%E5%8F%82%E6%95%B0).
 
 
-## 4. Extended File Input builder
+## 2. Extended File Input builder
 
 ```php
 echo FileInput::init([
     'uploadUrl' => 'upload',
 ])->withSuffix('current')->createHtml();
+```
+
+## 4. Receiving files
+
+Use this controller to receive a file on the url `/upload`.
+
+```php
+public function imageFileUpload(Request $request)
+{
+    $path = $request->file('file_data')->store('uploads');
+    return [
+        'error' => NULL,
+        'path' => $path,
+    ];
+}
 ```
