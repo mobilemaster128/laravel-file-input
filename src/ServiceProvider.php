@@ -28,7 +28,20 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
+        $this->publishConfig();
+        
         $this->publishAssets();
+    }
+
+    private function publishConfig()
+    {
+        $configPath = $this->packagePath('config/file-input.php');
+
+        $this->publishes([
+            $configPath => config_path('file-input.php'),
+        ], 'config');
+
+        $this->mergeConfigFrom($configPath, 'file-input');
     }
 
     private function publishAssets()

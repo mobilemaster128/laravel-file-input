@@ -70,6 +70,11 @@ EOC;
     public function getDefaultSettings()
     {
         $settings = [];
+        $settings['showCaption'] = true;
+        $settings['showPreview'] = true;
+        $settings['showRemove'] = true;
+        $settings['showUpload'] = false;
+        $settings['showCaption'] = true;
         $settings['ajaxSettings'] = [
             'headers' => [
                 'Accept' => 'application/json',
