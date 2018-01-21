@@ -48,7 +48,8 @@ EOC;
             $html .= "<label for=\"{$id}\">{$this->title}</label>";
         }
         $html .= "<div class=\"file-loading\">";
-        $html .= "<input id=\"{$id}\" name=\"{$name}\" type=\"file\"" . $this->multiple ? "multiple>" : ">";
+        $html .= "<input id=\"{$id}\" name=\"{$name}\" type=\"file\"";
+        $html .= $this->multiple ? "multiple>" : ">";
         $html .= '</div>';
 
         return $html;
