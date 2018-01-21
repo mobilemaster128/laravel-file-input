@@ -14,7 +14,9 @@
       "providers": [
           "MobileMaster\\LaravelFileInput\\ServiceProvider"
       ],
-      "aliases": {}
+      "aliases": {
+          "FileInput": "MobileMaster\\LaravelFileInput\\Facades\\FileInput"
+    }
     }
   },
   "require": {
