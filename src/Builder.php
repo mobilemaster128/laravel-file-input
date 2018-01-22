@@ -49,8 +49,8 @@ EOC;
         }
         $html .= "<div class=\"file-loading\">";
         $html .= "<input id=\"{$id}\" type=\"file\"";
-        $html .= $this->name ? " name=\"{$this->name}\"" : " ";         
-        $html .= $this->multiple ? $this->name ? " multiple >" : " name=\"file_data[]\" multiple >" : " >";
+        $html .= $this->name ? " name=\"{$this->name}\"" : $this->multiple ? " name=\"file_data[]\"" : " name=\"file_data\"";         
+        $html .= $this->multiple ? " multiple >" : " >";
         $html .= '</div>';
 
         return $html;
