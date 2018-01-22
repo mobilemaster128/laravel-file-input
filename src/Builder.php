@@ -17,7 +17,7 @@ class Builder
         $settings = json_encode($this->getSettings());
         $script = "var {$suffix}_file_input = $(\"input#{$id}[type=file]\");
         if ({$suffix}_file_input.length) {
-            {$suffix}_file_input.fileinput({{$settings}});
+            {$suffix}_file_input.fileinput({$settings});
         }";
         return $script;
     }
