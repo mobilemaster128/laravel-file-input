@@ -9,8 +9,9 @@ class Builder
     private $settings;
     private $suffix;
     private $name;
+    private $required;
 
-    public function createJsInit()
+    private function createJsInit()
     {
         $suffix = $this->getsuffix();
         $id = "input-{$suffix}";
@@ -22,7 +23,7 @@ class Builder
         return $script;
     }
 
-    public function addScripts()
+    private function addScripts()
     {
         $scripts = <<<EOC
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -39,7 +40,7 @@ EOC;
         return $scripts;
     }
 
-    public function getContainer()
+    private function getContainer()
     {
         $suffix = $this->getsuffix();
         $html = '';
@@ -49,6 +50,7 @@ EOC;
         }
         $html .= "<div class=\"file-loading\">";
         $html .= "<input id=\"{$id}\" type=\"file\"";
+        $html .= $this->required ? " required" : "";
         $html .= empty($this->name) ? $this->multiple ? " name=\"file_data[]\"" : " name=\"file_data\"" : " name=\"{$this->name}\"";         
         $html .= $this->multiple ? " multiple >" : " >";
         $html .= '</div>';
@@ -68,7 +70,7 @@ EOC;
         return $html;
     }
 
-    public function getDefaultSettings()
+    private function getDefaultSettings()
     {
         $settings = [];
         $settings['showCaption'] = true;
@@ -86,12 +88,12 @@ EOC;
         return $settings;
     }
 
-    public function setDefaults()
+    private function setDefaults()
     {
         $this->updateSettings($this->getDefaultSettings());
     }
 
-    public function getSettings()
+    private function getSettings()
     {
         $settings = $this->getDefaultSettings();
 
@@ -116,7 +118,7 @@ EOC;
         $this->suffix = $value;
     }
 
-    public function getsuffix()
+    private function getsuffix()
     {
         $suffix = $this->suffix ?: 'file';
         return $suffix;
@@ -139,6 +141,13 @@ EOC;
     public function multiple($value)
     {
         $this->multiple = $value;
+
+        return $this;
+    }
+
+    public function required()
+    {
+        $this->required = true;
 
         return $this;
     }
