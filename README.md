@@ -27,6 +27,16 @@ Handeling chunked uploads.
     php artisan vendor:publish --provider="MobileMaster\LaravelFileInput\ServiceProvider" --tag=assets
     ```
 
+4. Configuration
+
+    First, publish the configuration file:
+
+    ```
+    php artisan vendor:publish --provider="MobileMaster\LaravelFileInput\ServiceProvider" --tag=config
+    ```
+
+    Now, edit `config/fileinput.php` to configure the lang.
+
 ## 2. Updating
 
 1. To update this package, first update the composer package:
