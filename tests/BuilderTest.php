@@ -12,7 +12,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase
 
     public function testGetContainer()
     {
-        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('MobileMaster\LaravelFileInput');
 
         $builder = new Builder($plupload);
         $builder->setPrefix('test');
@@ -24,7 +24,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase
 
     public function testAddScripts()
     {
-        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('MobileMaster\LaravelFileInput');
 
         $builder = new Builder($plupload);
 
@@ -35,7 +35,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase
 
     public function testCreateJsInit()
     {
-        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('MobileMaster\LaravelFileInput');
 
         $builder = new Builder($plupload);
         $builder->setPrefix('test');
@@ -47,7 +47,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase
 
     public function testCreateJsRun()
     {
-        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('MobileMaster\LaravelFileInput');
 
         $builder = new Builder($plupload);
         $builder->setPrefix('test');
@@ -59,7 +59,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase
 
     public function testGetSettings()
     {
-        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('MobileMaster\LaravelFileInput');
 
         $builder = new Builder($plupload);
 
@@ -70,7 +70,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase
 
     public function testUpdateSettings()
     {
-        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('MobileMaster\LaravelFileInput');
 
         $builder = new Builder($plupload);
         $builder->updateSettings(['a' => 'b']);
@@ -82,7 +82,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase
 
     public function testSetPrefix()
     {
-        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('MobileMaster\LaravelFileInput');
 
         $builder = new Builder($plupload);
         $builder->setPrefix('abcd');
@@ -95,7 +95,7 @@ class BuilderTest extends PHPUnit_Framework_TestCase
 
     public function testSetScriptUrl()
     {
-        $plupload = m::mock('JildertMiedema\LaravelPlupload\Plupload');
+        $plupload = m::mock('MobileMaster\LaravelFileInput');
 
         $builder = new Builder($plupload);
         $builder->setPrefix('abcd');

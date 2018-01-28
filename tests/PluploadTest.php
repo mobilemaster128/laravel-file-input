@@ -14,7 +14,7 @@ class PluploadTest extends PHPUnit_Framework_TestCase
     {
         $config = m::mock(\Illuminate\Contracts\Config\Repository::class);
 
-        $config->shouldReceive('get')->with('laravel-plupload::plupload.view')->once()->andReturn('default-view');
+        $config->shouldReceive('get')->with('laravel-file-input::fileinput.view')->once()->andReturn('default-view');
 
         $plupload = new Plupload($config);
 
