@@ -11,6 +11,8 @@ class Builder
     private $name;
     private $required;
 
+    private static $hasOne = false;
+
     private function createJsInit()
     {
         $suffix = $this->getsuffix();
@@ -23,22 +25,32 @@ class Builder
         return $script;
     }
 
-    private function addScripts()
+    private  function addStyles()
+    {
+        $styles = <<<EOC
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/vendor/mobilemaster/file-input/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+EOC;
+        
+        return $styles;
+    }
+
+    private  function addScripts()
     {
         $scripts = <<<EOC
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('vendor/mobilemaster/fileinput/css/fileinput.min.css') }}" media="all" rel="stylesheet" type="text/css" />
         <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script src="{{ asset('vendor/mobilemaster/fileinput/js/plugins/piexif.min.js') }}" type="text/javascript"></script>
-        <script src={{ asset('vendor/mobilemaster/fileinput/js/plugins/sortable.min.js') }}" type="text/javascript"></script>
-        <script src={{ asset('vendor/mobilemaster/fileinput/js/plugins/purify.min.js') }}" type="text/javascript"></script>
-        <script src={{ asset('/maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}"></script>
-        <script src={{ asset('vendor/mobilemaster/fileinput/js/fileinput.min.js') }}"></script>
-        <script src={{ asset('vendor/mobilemaster/fileinput/themes/fa/theme.js') }}"></script>
-        @isset(config('fileinput.lang'))
-        <script src={{ asset('vendor/mobilemaster/fileinput/js/locales/' . config('fileinput.lang'). '.js') }}"></script>
-        @endisset
+        <script src="/vendor/mobilemaster/file-input/js/plugins/piexif.min.js" type="text/javascript"></script>
+        <script src="/vendor/mobilemaster/file-input/js/plugins/sortable.min.js" type="text/javascript"></script>
+        <script src="/vendor/mobilemaster/file-input/js/plugins/purify.min.js" type="text/javascript"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/vendor/mobilemaster/file-input/js/fileinput.min.js"></script>
+        <script src="/vendor/mobilemaster/file-input/themes/fa/theme.js"></script>
 EOC;
+
+        if (config('fileinput.lang') !== NULL) { 
+            $scripts.= sprintf('<script src="/vendor/mobilemaster/file-input/js/locales/%s.js"></script>', config('fileinput.lang'));
+        }
+        
         return $scripts;
     }
 
@@ -63,7 +75,11 @@ EOC;
     public function createHtml()
     {
         $html = '';
-        $html .= $this->addScripts();
+        if (!Builder::$hasOne) {
+            $html .= $this->addStyles();
+            $html .= $this->addScripts();
+        }
+        Builder::$hasOne = true;
         $html .= $this->getContainer();
         $html .= '<script type="text/javascript">';
         $html .= $this->createJsInit();
