@@ -32,7 +32,7 @@ class FileInput
      */
     public function getConfigOption($option)
     {
-        return $this->config->get("file-input.{$option}");
+        return $this->config->get("fileinput.{$option}");
     }
 
     public function getDefaultView()

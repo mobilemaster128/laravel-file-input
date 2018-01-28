@@ -35,19 +35,19 @@ class ServiceProvider extends BaseServiceProvider
 
     private function publishConfig()
     {
-        $configPath = $this->packagePath('config/file-input.php');
+        $configPath = $this->packagePath('config/fileinput.php');
 
         $this->publishes([
-            $configPath => config_path('file-input.php'),
+            $configPath => config_path('fileinput.php'),
         ], 'config');
 
-        $this->mergeConfigFrom($configPath, 'file-input');
+        $this->mergeConfigFrom($configPath, 'fileinput');
     }
 
     private function publishAssets()
     {
         $this->publishes([
-            $this->packagePath('resources/assets') => public_path('vendor/mobilemaster/file-input'),
+            $this->packagePath('resources/assets') => public_path('vendor/mobilemaster/fileinput'),
         ], 'assets');
     }
 
