@@ -47,7 +47,7 @@ class ServiceProvider extends BaseServiceProvider
     private function publishAssets()
     {
         $this->publishes([
-            $this->packagePath('resources/assets') => public_path('vendor/mobilemaster/fileinput'),
+            $this->packagePath('resources/assets') => public_path('vendor/mobilemaster/file-input'),
         ], 'assets');
     }
 
