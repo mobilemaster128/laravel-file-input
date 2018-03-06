@@ -1,5 +1,5 @@
 /*!
- * bootstrap-fileinput v4.4.7
+ * bootstrap-fileinput v4.4.8
  * http://plugins.krajee.com/file-input
  *
  * Krajee default styling for bootstrap-fileinput.
@@ -582,17 +582,6 @@ input[type=file].file-loading {
     .modal-body {
         overflow-y: auto;
     }
-}
-
-.btn-kv {
-    display: inline-block;
-    text-align: center;
-    width: multiply($pad, 6);
-    height: multiply($pad, 6);
-    line-height: multiply($pad, 6);
-    padding: 0;
-    font-size: 90%;
-    border-radius: 0.2rem;
 }
 
 .floating-buttons {

@@ -16,7 +16,7 @@
       ],
       "aliases": {
           "FileInput": "MobileMaster\\LaravelFileInput\\Facades\\FileInput"
-    }
+        }
     }
   },
   "require": {
