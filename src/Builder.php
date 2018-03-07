@@ -34,6 +34,7 @@ class Builder
             $styles = '<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />>';
         }
 
+        $styles = $styles ?: '';
         $styles .= '<link href="/vendor/mobilemaster/file-input/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />';
         
         return $styles;
