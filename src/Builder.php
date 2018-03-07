@@ -29,9 +29,9 @@ class Builder
     {
         $styles = '';
         if (config('fileinput.bootstrap') === 3) { 
-            $styles = '<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />>';
+            $styles .= '<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />>';
         } elseif (config('fileinput.bootstrap') === 4) { 
-            $styles = '<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />>';
+            $styles .= '<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />>';
         }
         $styles .= '<link href="/vendor/mobilemaster/file-input/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />';
         
@@ -42,7 +42,7 @@ class Builder
     {
         $scripts = '';
         if (config('fileinput.jquery') !== NULL) { 
-            $scripts = '<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>';
+            $scripts .= '<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>';
         }
         $scripts .= <<<EOC
         <script src="/vendor/mobilemaster/file-input/js/plugins/piexif.min.js" type="text/javascript"></script>
