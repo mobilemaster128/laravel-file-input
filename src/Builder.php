@@ -27,14 +27,12 @@ class Builder
 
     private  function addStyles()
     {
-
+        $styles = '';
         if (config('fileinput.bootstrap') === 3) { 
             $styles = '<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />>';
         } elseif (config('fileinput.bootstrap') === 4) { 
             $styles = '<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />>';
         }
-
-        $styles = $styles ?: '';
         $styles .= '<link href="/vendor/mobilemaster/file-input/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />';
         
         return $styles;
@@ -42,6 +40,7 @@ class Builder
 
     private  function addScripts()
     {
+        $scripts = '';
         if (config('fileinput.jquery') !== NULL) { 
             $scripts = '<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>';
         }
@@ -50,7 +49,6 @@ class Builder
         <script src="/vendor/mobilemaster/file-input/js/plugins/sortable.min.js" type="text/javascript"></script>
         <script src="/vendor/mobilemaster/file-input/js/plugins/purify.min.js" type="text/javascript"></script>
 EOC;
-
         if (config('fileinput.bootstrap') === 3) { 
             $scripts .= '<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>';
         } elseif (config('fileinput.bootstrap') === 4) { 
@@ -58,7 +56,6 @@ EOC;
             $scripts .= '<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>';
             $scripts .= '<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>';
         }
-
         $scripts .= <<<EOC
         <script src="/vendor/mobilemaster/file-input/js/fileinput.min.js"></script>
         <script src="/vendor/mobilemaster/file-input/themes/fa/theme.js"></script>
